@@ -4,9 +4,7 @@ import { stringCalculator } from "./stringCalculator.js"
 // stringCalculator(numbers: string): number
 // stringCalculator("1,2") =>> 3
 // stringCalculator("1") =>> 1
-// stringCalculator("") =>> 0
-
-// ZOM BIE
+// stringCalculator("") =>> 0 check
 
 describe("stringCalculator", () => {
   describe("first iteration", () => {
@@ -16,6 +14,27 @@ describe("stringCalculator", () => {
       const result = stringCalculator(emptyString)
 
       expect(result).toEqual(0)
+    })
+    it("returns the same number when its alone", () => {
+      const oneNumber = "1"
+
+      const result = stringCalculator(oneNumber)
+
+      expect(result).toEqual(1)
+    })
+    it("returns the sum of two numbers", () => {
+      const twoNumbers = "1,2"
+
+      const result = stringCalculator(twoNumbers)
+
+      expect(result).toEqual(3)
+    })
+    it("returns the sum of two numbers 2", () => {
+      const twoNumbers = "2,4"
+
+      const result = stringCalculator(twoNumbers)
+
+      expect(result).toEqual(6)
     })
   })
 })
