@@ -43,7 +43,6 @@ describe("stringCalculator", () => {
   })
 
   describe("third iteration", () => {
-    // 1\n2,3
     it("can separate with new lines", () => {
       const numbers = "1\n2,3"
 
