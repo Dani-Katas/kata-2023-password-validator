@@ -44,11 +44,21 @@ describe("stringCalculator", () => {
 
   describe("third iteration", () => {
     it("can separate with new lines", () => {
-      const numbers = "1\n2,3"
+      const numbersWithNewLine = "1\n2,3"
 
-      const result = stringCalculator(numbers)
+      const result = stringCalculator(numbersWithNewLine)
 
       expect(result).toEqual(6)
+    })
+  })
+
+  describe("forth iteration", () => {
+    it("supports custom delimiters", () => {
+      const numbersWithDelimiter = "//;\n1;2"
+
+      const result = stringCalculator(numbersWithDelimiter)
+
+      expect(result).toEqual(3)
     })
   })
 })

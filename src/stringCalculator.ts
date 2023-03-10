@@ -7,11 +7,25 @@ export function stringCalculator(textWithNumbers: string): number {
   return addNumbers(numbers)
 }
 
-function parseNumbers(textWithNumbers: string) {
-  const withoutNewLines = textWithNumbers.replace("\n", ",")
-  const numbers = withoutNewLines.split(",").map((element) => parseInt(element))
+function splitByDelimiter(textWithNumbers: string, delimiter = ",") {
+  const newLine = "\n"
+  const withoutNewLines = textWithNumbers.replace(newLine, delimiter)
 
-  return numbers
+  return withoutNewLines.split(delimiter).map((element) => parseInt(element))
+}
+
+function parseNumbers(textWithNumbers: string) {
+  const upcomingDelimiterIndicator = "//"
+  if (textWithNumbers.startsWith(upcomingDelimiterIndicator)) {
+    const delimiterLength = 1
+    const newLine = "\n"
+    const firstNumberIndex = upcomingDelimiterIndicator.length + delimiterLength + newLine.length
+    const textWithoutStartingDelimiter = textWithNumbers.substring(firstNumberIndex, textWithNumbers.length)
+    const delimiter = textWithNumbers[upcomingDelimiterIndicator.length]
+    return splitByDelimiter(textWithoutStartingDelimiter, delimiter)
+  }
+
+  return splitByDelimiter(textWithNumbers)
 }
 
 function addNumbers(numbers: number[]): number {
