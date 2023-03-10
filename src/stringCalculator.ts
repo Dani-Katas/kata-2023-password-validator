@@ -3,10 +3,16 @@ export function stringCalculator(textWithNumbers: string): number {
     return 0
   }
 
-  const numbers = parseNumbers(textWithNumbers)
-  if (numbers[0] < 0) throw new Error(`Negatives not allowed: ${numbers[0]}`)
+  const numbers = parse(textWithNumbers)
+  ensureThereAreNotNegative(numbers)
 
-  return addNumbers(numbers)
+  return addMultiple(numbers)
+}
+
+function ensureThereAreNotNegative(numbers: number[]) {
+  const negativeNumbers = numbers.filter((number) => number < 0)
+
+  if (negativeNumbers.length > 0) throw new Error(`Negatives not allowed: ${negativeNumbers}`)
 }
 
 function splitByDelimiter(textWithNumbers: string, delimiter = ",") {
@@ -16,7 +22,7 @@ function splitByDelimiter(textWithNumbers: string, delimiter = ",") {
   return withoutNewLines.split(delimiter).map((element) => parseInt(element))
 }
 
-function parseNumbers(textWithNumbers: string) {
+function parse(textWithNumbers: string) {
   const upcomingDelimiterIndicator = "//"
   if (textWithNumbers.startsWith(upcomingDelimiterIndicator)) {
     const delimiterLength = 1
@@ -30,7 +36,7 @@ function parseNumbers(textWithNumbers: string) {
   return splitByDelimiter(textWithNumbers)
 }
 
-function addNumbers(numbers: number[]): number {
+function addMultiple(numbers: number[]): number {
   return numbers.reduce(add)
 }
 

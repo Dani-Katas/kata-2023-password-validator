@@ -74,5 +74,11 @@ describe("stringCalculator", () => {
 
       expect(() => stringCalculator(negativeNumbers)).toThrowError(new Error("Negatives not allowed: -1,-2"))
     })
+
+    it("does not allow multiple negative numbers with positive numbers in between", () => {
+      const negativeNumbers = "1,-2,-3"
+
+      expect(() => stringCalculator(negativeNumbers)).toThrowError(new Error("Negatives not allowed: -2,-3"))
+    })
   })
 })
