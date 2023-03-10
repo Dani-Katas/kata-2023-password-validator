@@ -4,15 +4,17 @@ export function stringCalculator(numbers: string): number {
   }
 
   const arrayNumbers = parseNumbers(numbers)
-  return sumNumbers(arrayNumbers)
+  return addNumbers(arrayNumbers)
 }
 
 function parseNumbers(numbers: string) {
-  const arrayString = numbers.split(",")
-  const arrayNumbers = arrayString.map((element) => parseInt(element))
-  return arrayNumbers
+  return numbers.split(",").map((element) => parseInt(element))
 }
 
-function sumNumbers(arrayNumbers: number[]): number {
-  return arrayNumbers.reduce((totalSum, currentNumber) => totalSum + currentNumber)
+function addNumbers(numbers: number[]): number {
+  return numbers.reduce(add)
+}
+
+function add(first: number, second: number) {
+  return first + second
 }
