@@ -41,4 +41,15 @@ describe("stringCalculator", () => {
       expect(result).toEqual(6)
     })
   })
+
+  describe("third iteration", () => {
+    // 1\n2,3
+    it("can separate with new lines", () => {
+      const numbers = "1\n2,3"
+
+      const result = stringCalculator(numbers)
+
+      expect(result).toEqual(6)
+    })
+  })
 })

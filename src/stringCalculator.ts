@@ -1,14 +1,17 @@
-export function stringCalculator(numbers: string): number {
-  if (numbers === "") {
+export function stringCalculator(textWithNumbers: string): number {
+  if (textWithNumbers === "") {
     return 0
   }
 
-  const arrayNumbers = parseNumbers(numbers)
-  return addNumbers(arrayNumbers)
+  const numbers = parseNumbers(textWithNumbers)
+  return addNumbers(numbers)
 }
 
-function parseNumbers(numbers: string) {
-  return numbers.split(",").map((element) => parseInt(element))
+function parseNumbers(textWithNumbers: string) {
+  const withoutNewLines = textWithNumbers.replace("\n", ",")
+  const numbers = withoutNewLines.split(",").map((element) => parseInt(element))
+
+  return numbers
 }
 
 function addNumbers(numbers: number[]): number {
