@@ -3,11 +3,16 @@ export function stringCalculator(numbers: string): number {
     return 0
   }
 
-  const arrayString = numbers.split(",")
-  const arrayNumbers = arrayString.map((element) => parseInt(element))
+  const arrayNumbers = parseNumbers(numbers)
   return sumNumbers(arrayNumbers)
 }
 
-function sumNumbers(numbers: number[]): number {
-  return numbers.reduce((totalSum, currentNumber) => totalSum + currentNumber)
+function parseNumbers(numbers: string) {
+  const arrayString = numbers.split(",")
+  const arrayNumbers = arrayString.map((element) => parseInt(element))
+  return arrayNumbers
+}
+
+function sumNumbers(arrayNumbers: number[]): number {
+  return arrayNumbers.reduce((totalSum, currentNumber) => totalSum + currentNumber)
 }
