@@ -32,4 +32,13 @@ describe("stringCalculator", () => {
       expect(result).toEqual(6)
     })
   })
+  describe("second iteration", () => {
+    it("returns the sum of an arbitrate number of digits", () => {
+      const threeNumbers = "1,2,3"
+
+      const result = stringCalculator(threeNumbers)
+
+      expect(result).toEqual(6)
+    })
+  })
 })

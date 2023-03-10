@@ -3,9 +3,11 @@ export function stringCalculator(numbers: string): number {
     return 0
   }
 
-  if (numbers.length === 3) {
-    return parseInt(numbers[0]) + parseInt(numbers[2])
-  }
+  const arrayString = numbers.split(",")
+  const arrayNumbers = arrayString.map((element) => parseInt(element))
+  return sumNumbers(arrayNumbers)
+}
 
-  return parseInt(numbers)
+function sumNumbers(numbers: number[]): number {
+  return numbers.reduce((totalSum, currentNumber) => totalSum + currentNumber)
 }
