@@ -61,4 +61,18 @@ describe("stringCalculator", () => {
       expect(result).toEqual(3)
     })
   })
+
+  describe("fifth iteration", () => {
+    it("does not allow one negative number", () => {
+      const negativeNumber = "-1"
+
+      expect(() => stringCalculator(negativeNumber)).toThrowError(new Error("Negatives not allowed: -1"))
+    })
+
+    it("does not allow multiple negative numbers", () => {
+      const negativeNumbers = "-1,-2"
+
+      expect(() => stringCalculator(negativeNumbers)).toThrowError(new Error("Negatives not allowed: -1,-2"))
+    })
+  })
 })

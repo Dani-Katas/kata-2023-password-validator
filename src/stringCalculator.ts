@@ -4,6 +4,8 @@ export function stringCalculator(textWithNumbers: string): number {
   }
 
   const numbers = parseNumbers(textWithNumbers)
+  if (numbers[0] < 0) throw new Error(`Negatives not allowed: ${numbers[0]}`)
+
   return addNumbers(numbers)
 }
 
